@@ -1,0 +1,23 @@
+version: '2'
+services:
+  app:
+    build: .
+    image: my_app
+    ports:
+      - "8080:8080"
+    volumes:
+      - .:/usr/src/app/
+      - ./logs/app:/var/log/app
+    links:
+      - postgres
+
+  postgres:
+    image: postgres
+    volumes:
+      - ./.data/pgdata:/var/lib/postgresql/data/pgdata
+      - ./logs/postgresql:/var/log/postgresql
+    environment:
+      - POSTGRES_USER=django
+      - POSTGRES_PASSWORD=DockerIsGreat
+      - POSTGRES_DB=django
+      - PGDATA=/var/lib/postgresql/data/pgdata

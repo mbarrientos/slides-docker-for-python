@@ -1,3 +1,4 @@
 .ipynb**
 out/
-
+__pycache__
+.data

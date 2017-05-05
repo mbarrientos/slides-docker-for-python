@@ -12224,6 +12224,15 @@ docker run -p 8080:8080 my_app
 
 </div>
 </div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center> <img src="images/docker-compose-up-hacker.jpg" style="height:600px"/> </center>
+</div>
+</div>
 </div></section></section><section><section>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
@@ -12254,7 +12263,7 @@ docker run -p 8080:8080 my_app
 <ul>
 <li>Creating an <em>entry</em> script is usually a wise choice.</li>
 </ul>
-<p>You can even write it in Python (no bash code needed :) )</p>
+<p>You can even write it in Python (no bash code needed!)</p>
 
 </div>
 </div>
@@ -12266,28 +12275,24 @@ docker run -p 8080:8080 my_app
 <div class="text_cell_render border-box-sizing rendered_html">
 <div class="highlight"><pre><span></span><span class="nd">@command</span><span class="p">(</span><span class="n">command_type</span><span class="o">=</span><span class="n">CommandType</span><span class="o">.</span><span class="n">bash</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">manage</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]]:</span>
-    <span class="n">cmd</span> <span class="o">=</span> <span class="n">shlex</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;{PYTHON} manage.py&#39;</span><span class="p">)</span>
+    <span class="n">cmd</span> <span class="o">=</span> <span class="n">shlex</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;python manage.py&#39;</span><span class="p">)</span>
     <span class="n">cmd</span> <span class="o">+=</span> <span class="n">args</span>
     <span class="k">return</span> <span class="p">[</span><span class="n">cmd</span><span class="p">]</span>
-
 
 <span class="nd">@command</span><span class="p">(</span><span class="n">command_type</span><span class="o">=</span><span class="n">CommandType</span><span class="o">.</span><span class="n">bash</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">unit_tests</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]]:</span>
-    <span class="n">tests</span> <span class="o">=</span> <span class="n">shlex</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;{COVERAGE} run --concurrency=multiprocessing manage.py test --parallel&#39;</span><span class="p">)</span>
+    <span class="n">tests</span> <span class="o">=</span> <span class="n">shlex</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;coverage run --concurrency=multiprocessing manage.py test --parallel&#39;</span><span class="p">)</span>
     <span class="n">tests</span> <span class="o">+=</span> <span class="n">args</span>
     <span class="k">return</span> <span class="p">[</span><span class="n">tests</span><span class="p">]</span>
 
-
 <span class="nd">@command</span><span class="p">(</span><span class="n">command_type</span><span class="o">=</span><span class="n">CommandType</span><span class="o">.</span><span class="n">bash</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">prospector</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]]:</span>
-    <span class="n">cmd</span> <span class="o">=</span> <span class="p">[</span><span class="n">PROSPECTOR</span><span class="p">]</span>
+    <span class="n">cmd</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;prospector&#39;</span><span class="p">]</span>
     <span class="n">cmd</span> <span class="o">+=</span> <span class="n">args</span>
     <span class="k">return</span> <span class="p">[</span><span class="n">cmd</span><span class="p">]</span>
 
-
 <span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
-    <span class="n">main</span> <span class="o">=</span> <span class="n">Main</span><span class="p">()</span>
-    <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="n">main</span><span class="o">.</span><span class="n">run</span><span class="p">())</span>
+    <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="n">Main</span><span class="p">()</span><span class="o">.</span><span class="n">run</span><span class="p">())</span>
 </pre></div>
 
 </div>
@@ -12385,6 +12390,43 @@ docker run -p 8080:8080 my_app
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<p>Out-of-the-box services:</p>
+<ul>
+<li>DBs:<ul>
+<li>postgres</li>
+<li>mysql</li>
+</ul>
+</li>
+<li>Streaming &amp; queues:<ul>
+<li>rabbitmq</li>
+<li>spotify/kafka (kafka + zookeeper)</li>
+<li>redis</li>
+</ul>
+</li>
+<li>ML:<ul>
+<li>tensorflow (:latest / :latest-gpu)</li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Every other "service" you can imagine, try first to <em>google</em> for an existing Dockerfile.</p>
+
+</div>
+</div>
+</div></div></section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h4 id="Rocker">Rocker<a class="anchor-link" href="#Rocker">&#182;</a></h4><p><a href="https://github.com/grammarly/rocker">https://github.com/grammarly/rocker</a></p>
 <ul>
 <li>Allows us to write <em>"Rockerfiles"</em>, enhanced versions of Dockerfile to give some extra features, like:<ul>
@@ -12393,16 +12435,6 @@ docker run -p 8080:8080 my_app
 </ul>
 </li>
 </ul>
-
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Every other "service" you can imagine, try first to <em>google</em> for an existing Dockerfile.</p>
 
 </div>
 </div>

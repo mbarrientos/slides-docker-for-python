@@ -11824,40 +11824,27 @@ a.anchor-link {
 
 <div class="reveal">
 <div class="slides">
-<section><section>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">&lt;</span><span class="n">script</span><span class="o">&gt;</span>
-    <span class="n">var</span> <span class="n">code_show</span><span class="o">=</span><span class="n">true</span><span class="p">;</span> <span class="o">//</span><span class="n">true</span> <span class="o">-&gt;</span> <span class="n">hide</span> <span class="n">code</span> <span class="n">at</span> <span class="n">first</span>
+<section><section><script>
+    var code_show=true; //true -> hide code at first
 
-    <span class="n">function</span> <span class="n">code_toggle</span><span class="p">()</span> <span class="p">{</span>
-        <span class="err">$</span><span class="p">(</span><span class="s1">&#39;div.prompt&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">hide</span><span class="p">();</span> <span class="o">//</span> <span class="n">always</span> <span class="n">hide</span> <span class="n">prompt</span>
+    function code_toggle() {
+        $('div.prompt').hide(); // always hide prompt
 
-        <span class="k">if</span> <span class="p">(</span><span class="n">code_show</span><span class="p">){</span>
-            <span class="err">$</span><span class="p">(</span><span class="s1">&#39;div.input&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">hide</span><span class="p">();</span>
-        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-            <span class="err">$</span><span class="p">(</span><span class="s1">&#39;div.input&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">show</span><span class="p">();</span>
-        <span class="p">}</span>
-        <span class="n">code_show</span> <span class="o">=</span> <span class="o">!</span>code_show
-    <span class="p">}</span>
-    <span class="err">$</span><span class="p">(</span> <span class="n">document</span> <span class="p">)</span><span class="o">.</span><span class="n">ready</span><span class="p">(</span><span class="n">code_toggle</span><span class="p">);</span>
-<span class="o">&lt;/</span><span class="n">script</span><span class="o">&gt;</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div></section></section><section><section>
+        if (code_show){
+            $('div.input').hide();
+        } else {
+            $('div.input').show();
+        }
+        code_show = !code_show
+    }
+    $( document ).ready(code_toggle);
+</script></section></section><section><section>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Docker-for-Python-Development">Docker for Python Development<a class="anchor-link" href="#Docker-for-Python-Development">&#182;</a></h2><h3 id="How-to-live-24/7-with-Docker-builds">How to live 24/7 with Docker builds<a class="anchor-link" href="#How-to-live-24/7-with-Docker-builds">&#182;</a></h3>
+<h2 id="Docker-for-Python-Development">Docker for Python Development<a class="anchor-link" href="#Docker-for-Python-Development">&#182;</a></h2><h4 id="How-to-live-24/7-with-Docker">How to live 24/7 with Docker<a class="anchor-link" href="#How-to-live-24/7-with-Docker">&#182;</a></h4>
 </div>
 </div>
 </div></section></section><section><section>
@@ -11880,17 +11867,15 @@ a.anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>In this slides...</p>
-<ol>
-<li>Docker overview<ul>
-<li>docker</li>
-<li>docker-compose</li>
+<h3 id="Content">Content<a class="anchor-link" href="#Content">&#182;</a></h3><ol>
+<li><strong>Docker overview</strong><ul>
+<li>Docker</li>
+<li>Docker Compose</li>
 </ul>
 </li>
-<li>Why is Docker useful at Python apps?</li>
-<li>Some examples</li>
-<li>A bunch of tips</li>
-<li>Some useful images</li>
+<li><strong>Building a Django application</strong></li>
+<li><strong>Thoughts and advices</strong></li>
+<li><strong>Useful images and tools</strong></li>
 </ol>
 
 </div>
@@ -11910,7 +11895,7 @@ a.anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<ul>
+<h4 id="Docker">Docker<a class="anchor-link" href="#Docker">&#182;</a></h4><ul>
 <li>Docker is a tool designed to make it easier to create, deploy, and run applications by using containers.</li>
 </ul>
 
@@ -11946,9 +11931,43 @@ a.anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Docker architecture
-<img src="images/docker-architecture.svg" alt="alt text"></p>
+<h4 id="Docker-Compose">Docker Compose<a class="anchor-link" href="#Docker-Compose">&#182;</a></h4><ul>
+<li>Tool for defining and running multi-container Docker applications</li>
+</ul>
 
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>Aggregate a set of services (based on Docker images) and manages network visibility </li>
+</ul>
+
+</div>
+</div>
+</div></div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>Very easy to use.</li>
+</ul>
+
+</div>
+</div>
+</div></div></section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center> <img height="60%" src="images/docker-architecture.svg"/></center>
 </div>
 </div>
 </div><div class="fragment">
@@ -11968,10 +11987,10 @@ a.anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Creating-an-image">Creating an image<a class="anchor-link" href="#Creating-an-image">&#182;</a></h1>
+<h1 id="Building-a-Django-application">Building a Django application<a class="anchor-link" href="#Building-a-Django-application">&#182;</a></h1>
 </div>
 </div>
-</div>
+</div></section><section>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -11988,8 +12007,7 @@ a.anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>First, we start by creating a <strong>Dockerfile</strong>:</p>
-
+<h4 id="First,-we-start-by-creating-a-Dockerfile:">First, we start by creating a <strong>Dockerfile</strong>:<a class="anchor-link" href="#First,-we-start-by-creating-a-Dockerfile:">&#182;</a></h4>
 <pre><code>FROM python:3.6
 
 RUN apt-get update &amp;&amp; \
@@ -12027,7 +12045,7 @@ CMD ["runserver", "0.0.0.0:8080"]</code></pre>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Now we need to:</p>
+<p>To run it, we only need to:</p>
 
 </div>
 </div>
@@ -12059,7 +12077,7 @@ CMD ["runserver", "0.0.0.0:8080"]</code></pre>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Quite-simple,-right?">Quite simple, right?<a class="anchor-link" href="#Quite-simple,-right?">&#182;</a></h3>
+<h4 id="Quite-simple,-right?">Quite simple, right?<a class="anchor-link" href="#Quite-simple,-right?">&#182;</a></h4>
 </div>
 </div>
 </div></div></section><section>
@@ -12212,7 +12230,7 @@ docker run -p 8080:8080 my_app
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Some-thoughts-about-working-with-Python-+-Docker">Some thoughts about working with Python + Docker<a class="anchor-link" href="#Some-thoughts-about-working-with-Python-+-Docker">&#182;</a></h3>
+<h3 id="Thoughts-and-advices">Thoughts and advices<a class="anchor-link" href="#Thoughts-and-advices">&#182;</a></h3>
 </div>
 </div>
 </div></section><section>
@@ -12227,7 +12245,7 @@ docker run -p 8080:8080 my_app
 
 </div>
 </div>
-</div></section><section>
+</div><div class="fragment">
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -12236,16 +12254,16 @@ docker run -p 8080:8080 my_app
 <ul>
 <li>Creating an <em>entry</em> script is usually a wise choice.</li>
 </ul>
+<p>You can even write it in Python (no bash code needed :) )</p>
 
 </div>
 </div>
-</div></section><section>
+</div></div></section><section>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>You can even writ</p>
 <div class="highlight"><pre><span></span><span class="nd">@command</span><span class="p">(</span><span class="n">command_type</span><span class="o">=</span><span class="n">CommandType</span><span class="o">.</span><span class="n">bash</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">manage</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]]:</span>
     <span class="n">cmd</span> <span class="o">=</span> <span class="n">shlex</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;{PYTHON} manage.py&#39;</span><span class="p">)</span>
@@ -12255,17 +12273,9 @@ docker run -p 8080:8080 my_app
 
 <span class="nd">@command</span><span class="p">(</span><span class="n">command_type</span><span class="o">=</span><span class="n">CommandType</span><span class="o">.</span><span class="n">bash</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">unit_tests</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]]:</span>
-    <span class="n">coverage_erase</span> <span class="o">=</span> <span class="n">shlex</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;{COVERAGE} erase&#39;</span><span class="p">)</span>
-
     <span class="n">tests</span> <span class="o">=</span> <span class="n">shlex</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;{COVERAGE} run --concurrency=multiprocessing manage.py test --parallel&#39;</span><span class="p">)</span>
     <span class="n">tests</span> <span class="o">+=</span> <span class="n">args</span>
-
-    <span class="n">coverage_combine</span> <span class="o">=</span> <span class="n">shlex</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;{COVERAGE} combine&#39;</span><span class="p">)</span>
-    <span class="n">coverage_report</span> <span class="o">=</span> <span class="n">shlex</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;{COVERAGE} report&#39;</span><span class="p">)</span>
-    <span class="n">coverage_xml</span> <span class="o">=</span> <span class="n">shlex</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;{COVERAGE} xml&#39;</span><span class="p">)</span>
-    <span class="n">coverage_html</span> <span class="o">=</span> <span class="n">shlex</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;{COVERAGE} html&#39;</span><span class="p">)</span>
-
-    <span class="k">return</span> <span class="p">[</span><span class="n">coverage_erase</span><span class="p">,</span> <span class="n">tests</span><span class="p">,</span> <span class="n">coverage_combine</span><span class="p">,</span> <span class="n">coverage_xml</span><span class="p">,</span> <span class="n">coverage_html</span><span class="p">,</span> <span class="n">coverage_report</span><span class="p">]</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">tests</span><span class="p">]</span>
 
 
 <span class="nd">@command</span><span class="p">(</span><span class="n">command_type</span><span class="o">=</span><span class="n">CommandType</span><span class="o">.</span><span class="n">bash</span><span class="p">)</span>
@@ -12282,7 +12292,7 @@ docker run -p 8080:8080 my_app
 
 </div>
 </div>
-</div>
+</div></section><section>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -12294,6 +12304,51 @@ docker run -p 8080:8080 my_app
 
 </div>
 </div>
+</div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>Sometimes it's useful to run tests in <em>library</em> projects, for encapsulating test environments.</li>
+</ul>
+
+</div>
+</div>
+</div></div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>Remove cache directories for package managers (apt, pip, ...) after building.</li>
+</ul>
+
+</div>
+</div>
+</div></div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>Keep your Dockerfile updated, <strong>DO NOT COMMIT CHANGES</strong></li>
+</ul>
+
+</div>
+</div>
+</div></div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Useful-images-and-tools">Useful images and tools<a class="anchor-link" href="#Useful-images-and-tools">&#182;</a></h3>
+</div>
+</div>
 </div></section><section>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
@@ -12301,12 +12356,77 @@ docker run -p 8080:8080 my_app
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <ul>
-<li>Keep your Dockerfile updated, <strong>DO NOT COMMIT CHANGES</strong> !! </li>
+<li>Official Python images (<a href="https://hub.docker.com/_/python/">https://hub.docker.com/_/python/</a>):<ul>
+<li>python:2.7</li>
+<li>python:3.6</li>
+<li>"-slim", "-alpine" versions for really lightweight base images.</li>
+</ul>
+</li>
 </ul>
 
 </div>
 </div>
-</div></section></section>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>Jupyter notebooks (<a href="https://github.com/jupyter/docker-stacks">https://github.com/jupyter/docker-stacks</a>): </li>
+</ul>
+<p><img src="images/jupyter_stacks.svg" alt="jupyter_stacks"></p>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Rocker">Rocker<a class="anchor-link" href="#Rocker">&#182;</a></h4><p><a href="https://github.com/grammarly/rocker">https://github.com/grammarly/rocker</a></p>
+<ul>
+<li>Allows us to write <em>"Rockerfiles"</em>, enhanced versions of Dockerfile to give some extra features, like:<ul>
+<li>Multi-tagging images.</li>
+<li>Dockerfile <em>mutliple-inheritance</em>.</li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Every other "service" you can imagine, try first to <em>google</em> for an existing Dockerfile.</p>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="That's-all!">That's all!<a class="anchor-link" href="#That's-all!">&#182;</a></h4>
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center>
+<img src="images/thanks.jpg"/>
+</center>
+</div>
+</div>
+</div></div></section></section>
 </div>
 </div>
 
